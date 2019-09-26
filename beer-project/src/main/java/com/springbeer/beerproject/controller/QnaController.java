@@ -25,10 +25,7 @@ public class QnaController {
 	QnaService qnaService;
 	
 	@RequestMapping(value = "/qnalist", method = RequestMethod.GET)
-	public String qnatList(Model model
-		//	,@RequestParam(required = false, defaultValue = "1") int page
-		//	, @RequestParam(required = false, defaultValue = "1") int range, HttpSession session
-			) {
+	public String qnatList(Model model) {
 
 		List<Qna> Qnas = qnaService.findQnaList();
 
@@ -77,15 +74,7 @@ public class QnaController {
 		
 		return "redirect:/qna/qnalist";
 	}
-	
-	
-	
-	@PostMapping(value = "/updatewrite")
-	public String qnaUpdateWrite(Model model, Qna qna) {
-		
-		
-	return "redirect:/qna/qnalist";
-	}
+
 	
 	@RequestMapping(value = "/qnadelete", method=RequestMethod.GET)
 	public String qnaDelete(@RequestParam(name="qnaNo") int qnaNo, Model model) {

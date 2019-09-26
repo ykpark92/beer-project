@@ -17,7 +17,7 @@ public class SubsqServiceImpl implements SubsqService {
 
 	@Override
 	public List<Subscription> findSubsqList() {
-		List<Subscription> subsq = (List<Subscription>)subsqRepository.findAll();
+		List<Subscription> subsq = subsqRepository.findAll();
 		return subsq;
 	}
 
@@ -43,7 +43,6 @@ public class SubsqServiceImpl implements SubsqService {
 
 
 	@Override
-
 	public List<Subscription> findSubsqList(int subsqDate) {
 //		List<Subscription> subsq = (List<Subscription>)subsqRepository.findSubsqListByDate(subsqDate); 
 //		return subsq;

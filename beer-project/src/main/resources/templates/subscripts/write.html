@@ -96,7 +96,13 @@
                       </div>
                       <div class="col-md-6 form-group">
                           <label for="lname">분류</label>
-                          <input type="text" name="subsqDiv" id="subsqDiv" class="form-control form-control-lg">
+                          <select type="selectbox" name="subsqDiv" id="subsqDiv" class="form-control form-control-lg">
+	                          <option value="Darkbeer">흑맥주</option>
+	                          <option value="Grain">맥주원료</option>
+	                          <option value="Way">맥주제조</option>
+	                          <option value="Whitebeer">흰맥주</option>
+	                          
+                          </select>
                       </div>
                   </div>
                   <div class="row">
@@ -107,7 +113,7 @@
                   </div>
                   <div class="row">
                       <div class="col-md-12 form-group">
-                          <label for="file">첨부파일</label>
+                          <label for="file">첨부자료</label>
                           <input type="file" id="subfile" name="subfile"></textarea>
 	                          <div id='preview'>
 	                          <!-- 미리보기 공간 -->

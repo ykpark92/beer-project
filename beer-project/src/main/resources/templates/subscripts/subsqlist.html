@@ -75,11 +75,6 @@
         <div class="row mb-5">
           <div class="col-12">
             <h2>Recent Posts</h2>
-		<!--  <ul id="ul_top_menu"> -->
-            <input type="button" class="btn btn-primary py-3 px-5"><a th:href="@{/subsq/}" value="상품명"></a></input>
-            <input type="button" class="btn btn-primary py-3 px-5"><a th:href="@{/subsq/}" value="신상품"></a></input>
-            <input type="button" class="btn btn-primary py-3 px-5"><a th:href="@{/subsq/}" value="인기상품"></a></input>
-<!--          </ul> -->
 
           </div>
         </div>
@@ -90,7 +85,7 @@
               
               <div class="excerpt">
               <span class="post-category text-white bg-secondary mb-3" th:text="${Subscription.subsqDiv}"></span>
- 		   	  <img th:src="@{'/images/' + ${Subscription.files[0].subsqSavedFileName}}" alt="Image" class="img-fluid rounded">
+ 		   	  <img th:each="pfile:${Subscription.files}" th:src="@{/images/{fileName}(fileName=${pfile.subsqSavedFileName})}" alt="Image" class="img-fluid rounded">
               <h2><a th:text="${Subscription.subsqTitle}"></a></h2>
               <div class="post-meta align-items-center text-left clearfix">
                 <span class="d-inline-block mt-1" th:text="${Subscription.id}"></span>
@@ -105,7 +100,6 @@
 		  </div>
     
      <div class="row text-center pt-5 border-top">
-
           <div class="col-md-12">
             <div class="custom-pagination">
 				<c:if test="${pagination.prev}">

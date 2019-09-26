@@ -22,7 +22,7 @@
             <div class="section-title mb-5">
               <h2>Modify</h2>
             </div>
-            <form th:action="@{'/subsq/subsqupdatewrite/' + ${subsqupdate.subsqNo}}" method="post">
+            <form th:action="@{'/subsq/subsqupdatewrite/' + ${subsqupdate.subsqNo}}" method="post" enctype="multipart/form-data">
                   <div class="row">
                       <div class="col-md-6 form-group">
                           <label for="fname">ID</label>
@@ -31,7 +31,13 @@
                       </div>
                       <div class="col-md-6 form-group">
                           <label for="lname">분류</label>
-                          <input type="text" id="subsqDiv" name="subsqDiv" class="form-control form-control-lg"  th:value="${subsqupdate.subsqDiv}">
+                          <select type="selectbox" name="subsqDiv" id="subsqDiv" class="form-control form-control-lg">
+	                          <option value="Darkbeer">흑맥주</option>
+	                          <option value="Grain">맥주원료</option>
+	                          <option value="Way">맥주제조</option>
+	                          <option value="Whitebeer">흰맥주</option>
+	                          
+                          </select>
                       </div>
                   </div>
                   <div class="row">
@@ -39,10 +45,16 @@
                           <label for="eaddress">제목</label>
                           <input type="text" id="subsqTitle" name="subsqTitle" class="form-control form-control-lg"  th:value="${subsqupdate.subsqTitle}">
                       </div>
-                     <!--  <div class="col-md-6 form-group">
-                          <label for="tel">관련 글 번호</label>
-                          <input type="text" id="textno" class="form-control form-control-lg">
-                      </div> -->
+
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12 form-group">
+                          <label for="file">첨부자료</label>
+                          <input type="file" id="subfile" name="subfile" ></textarea>
+	                          <div id='preview' >
+
+	                      	  </div>
+                      </div>
                   </div>
                   <div class="row">
                       <div class="col-md-12 form-group">
@@ -50,6 +62,7 @@
                           <textarea name="subsqContent" id="subsqContent" cols="30" rows="10" class="form-control" th:text="${subsqupdate.subsqContent}"></textarea>
                       </div>
                   </div>
+
                      <input type="submit" class="btn btn-primary py-3 px-5" value="수정하기"/>                 
                 	 <input type="button" onclick="location.href='/subsq/list'" class="btn btn-primary py-3 px-5" id="return" value="돌아가기" />
                 </form>
@@ -61,4 +74,30 @@
       </div>
     </div>
 
+    <script> // 첨부파일 이미지 미리 보기
+    	var files = document.querySelector('#subfile');
+    	var preview = document.querySelector('#preview');
+    	
+    	files.addEventListener('change',function(e){
+    		var get_file=e.target.files;
+    		
+    		var image = document.createElement('img');
+    		
+    		var reader = new FileReader();
+    		
+    		reader.onload = (function (aImg) {
+
+    			return function(e) {
+    				aImg.src = e.target.result
+    			}
+    		})(image)
+    		
+    		if(get_file) {
+    			reader.readAsDataURL(get_file[0]);
+
+    		}
+    		preview.appendChild(image);
+    	})
+    </script>
+    
 <footer th:include="@{/commons/footer.html}"></footer> 

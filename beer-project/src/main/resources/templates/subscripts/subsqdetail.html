@@ -49,12 +49,14 @@
                           <textarea id="subsqContent" name="subsqContent" cols="30" rows="10" class="form-control" readonly="readonly" th:text="${subsqdetail.subsqContent}"></textarea>
                       </div>
                   </div>
-                <!--   <div class="row">
+                  <div class="row">
                       <div class="col-md-12 form-group">
-                          <label for="file">첨부파일</label>
-                          <input type="file" id="files" name="files" th:text="${subsqdetail.files}"></textarea>
+                          <label for="file">첨부자료</label>
+                          <br>
+                          <img th:each="pfile:${subsqdetail.files}" th:src="@{/images/{fileName}(fileName=${pfile.subsqSavedFileName})}" />
+
                       </div>
-                  </div> -->
+                  </div>
 
                      <input type="button" th:onclick="|window.location.href='/subsq/update?subsqNo=${subsqdetail.subsqNo}'|" class="btn btn-primary py-3 px-5" id="update" value="수정하기"/>                       
                 	 <input type="button" th:onclick="|window.location.href='/subsq/delete?subsqNo=${subsqdetail.subsqNo}'|" class="btn btn-primary py-3 px-5" id="delete" value="삭제하기"/>
